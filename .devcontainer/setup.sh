@@ -11,19 +11,10 @@ apt-get install -y \
   build-essential \
   openssl
 
-## Install rustup and common components
-curl https://sh.rustup.rs -sSf | sh -s -- -y 
-rustup install nightly
-rustup component add rustfmt
-rustup component add rustfmt --toolchain nightly
-rustup component add clippy 
-rustup component add clippy --toolchain nightly
-
-cargo install cargo-expand
-cargo install cargo-edit
-
-## setup and install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+## Install rustup and
+curl -o zig.tar.xz https://ziglang.org/download/0.11.0/zig-linux-x86_64-0.11.0.tar.xz 
+tar -xf zig.tar.xz
+mv zig-* /usr/local/bin/zig
 cp -R /root/.oh-my-zsh /home/$USERNAME
 cp /root/.zshrc /home/$USERNAME
 sed -i -e "s/\/root\/.oh-my-zsh/\/home\/$USERNAME\/.oh-my-zsh/g" /home/$USERNAME/.zshrc
